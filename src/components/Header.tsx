@@ -43,11 +43,11 @@ const Header = () => {
           </nav>
 
           {/* CTA Button - Desktop */}
-          {/* <div className="hidden md:block">
+          <div className="hidden md:block">
             <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white">
               Get Started
             </Button>
-          </div> */}
+          </div>
 
           {/* Mobile Menu Button */}
           <Button

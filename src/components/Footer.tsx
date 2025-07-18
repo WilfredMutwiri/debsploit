@@ -133,14 +133,14 @@ const Footer = () => {
 
         {/* Newsletter Signup */}
         <div className="mt-16 pt-8 border-t border-border">
-          <div className="glass-card p-8 cyber-glow">
+          <div className="glass-card p-4 md:p-8 cyber-glow">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
-                <h3 className="text-2xl font-heading font-semibold">
+                <h3 className="text-xl md:text-2xl font-heading font-semibold">
                   Stay Updated with{" "}
                   <span className="gradient-text">Debsploit Insights</span>
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm md:text-base">
                   Get the latest cybersecurity trends, industry insights, and 
                   exclusive training offers delivered to your inbox.
                 </p>
@@ -150,9 +150,9 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue transition-all"
+                  className="w-11/12 md:w-auto flex-1 px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue transition-all"
                 />
-                <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white px-8">
+                <Button className="w-11/12 md:w-auto cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white px-8">
                   Subscribe
                 </Button>
               </div>

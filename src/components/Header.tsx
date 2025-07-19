@@ -23,20 +23,20 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img src={logoImg} className="h-10 w-10"/>
-            <span className="text-2xl font-heading font-bold gradient-text">
+            <span className="text-xl md:text-2xl font-heading font-bold gradient-text">
               Debsploit Solutions
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+<nav className="hidden md:flex flex-wrap items-center gap-x-6">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 className="text-foreground/80 hover:text-cyber-blue transition-colors duration-300 flex items-center space-x-1"
               >
-                <item.icon className="h-4 w-4" />
+                <item.icon className="h-4 w-4 md:hidden " />
                 <span>{item.name}</span>
               </a>
             ))}

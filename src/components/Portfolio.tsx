@@ -1,5 +1,11 @@
 import { ExternalLink, Github, Award, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import securityImg from "@/assets/security.jpg";
+import commerce from "@/assets/e-commerce.jpg";
+import bankingImg from "@/assets/banking.jpg";
+import healthImg from "@/assets/health.jpg";
+import fintech from "@/assets/fintech.jpg";
+import government from "@/assets/government.jpg";
 
 const Portfolio = () => {
   const projects = [
@@ -7,7 +13,7 @@ const Portfolio = () => {
       title: "Enterprise Security Assessment",
       category: "Cybersecurity",
       description: "Comprehensive security audit for Fortune 500 company, identifying critical vulnerabilities and implementing robust security measures.",
-      image: "/api/placeholder/400/300",
+      image: securityImg,
       tags: ["Penetration Testing", "Vulnerability Assessment", "Security Audit"],
       client: "TechCorp International",
       year: "2024",
@@ -18,7 +24,7 @@ const Portfolio = () => {
       title: "E-commerce Platform Development",
       category: "Web Development", 
       description: "Full-stack e-commerce solution with modern React frontend, Node.js backend, and comprehensive security features.",
-      image: "/api/placeholder/400/300",
+      image: commerce,
       tags: ["React", "Node.js", "MongoDB", "Payment Integration"],
       client: "RetailPlus Solutions",
       year: "2024",
@@ -29,7 +35,7 @@ const Portfolio = () => {
       title: "Banking Security Framework",
       category: "Security Consulting",
       description: "Designed and implemented comprehensive cybersecurity framework for regional banking institution.",
-      image: "/api/placeholder/400/300",
+      image: bankingImg,
       tags: ["Compliance", "Risk Assessment", "Policy Development"],
       client: "Regional Bank Corp",
       year: "2023",
@@ -40,7 +46,7 @@ const Portfolio = () => {
       title: "Healthcare Data Protection",
       category: "Cybersecurity",
       description: "HIPAA-compliant security implementation for healthcare provider, ensuring patient data protection.",
-      image: "/api/placeholder/400/300",
+      image:healthImg,
       tags: ["HIPAA Compliance", "Data Encryption", "Access Control"],
       client: "MedCare Systems",
       year: "2023",
@@ -51,7 +57,7 @@ const Portfolio = () => {
       title: "Fintech Mobile Application",
       category: "Web Development",
       description: "Secure mobile banking application with biometric authentication and real-time fraud detection.",
-      image: "/api/placeholder/400/300",
+      image: fintech,
       tags: ["React Native", "Biometric Auth", "Fraud Detection"],
       client: "FinanceFlow Ltd",
       year: "2023",
@@ -62,7 +68,7 @@ const Portfolio = () => {
       title: "Government Security Training",
       category: "Corporate Training",
       description: "Comprehensive cybersecurity training program for government agencies and contractors.",
-      image: "/api/placeholder/400/300",
+      image:government,
       tags: ["Security Training", "Compliance", "Government Standards"],
       client: "Government Agency",
       year: "2024",
@@ -105,6 +111,10 @@ const Portfolio = () => {
                     {project.category}
                   </span>
                 </div>
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
                 <div className="absolute bottom-4 right-4 flex space-x-2">
                   <Button size="icon" variant="ghost" className="h-8 w-8 bg-background/20 hover:bg-background/40">
                     <ExternalLink className="h-4 w-4" />

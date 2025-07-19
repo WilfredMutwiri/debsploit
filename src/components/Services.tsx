@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import pentestIcon from "@/assets/pentest-icon.jpg";
 import webdevIcon from "@/assets/webdev-icon.jpg";
 import consultingIcon from "@/assets/consulting-icon.jpg";
-
+import digitalMarketingIcon from "@/assets/digitalmarketing.jpg";
+import pentestIcon2 from "@/assets/pentest2.jpg";
+import corporateImg from "@/assets/corporate.jpg";
 const Services = () => {
   const services = [
     {
@@ -26,7 +28,7 @@ const Services = () => {
     },
     {
       icon: Search,
-      image: pentestIcon,
+      image: pentestIcon2,
       title: "Penetration Testing",
       description: "Professional penetration testing services to identify vulnerabilities and strengthen your security posture.",
       features: ["Vulnerability Assessment", "Web App Testing", "Network Penetration", "Security Reports"],
@@ -44,7 +46,7 @@ const Services = () => {
     },
     {
       icon: Users,
-      image: webdevIcon,
+      image: corporateImg,
       title: "Corporate Training",
       description: "Customized training programs for organizations to upskill their teams in cybersecurity and development.",
       features: ["Team Training", "Custom Curriculum", "On-site/Remote", "Certification Support"],
@@ -53,7 +55,7 @@ const Services = () => {
     },
     {
       icon: Zap,
-      image: consultingIcon,
+      image: digitalMarketingIcon,
       title: "Digital Marketing",
       description: "Strategic digital marketing services to help businesses grow their online presence and reach their target audience.",
       features: ["SEO Optimization", "Social Media", "Content Strategy", "Analytics & Reporting"],

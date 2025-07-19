@@ -73,7 +73,7 @@ const Portfolio = () => {
       client: "Government Agency",
       year: "2024",
       results: "500+ professionals trained",
-      color: "cyber-purple"
+      color: "white"
     },
     
   ];
@@ -108,7 +108,7 @@ const Portfolio = () => {
               <div className="relative h-48 bg-gradient-to-br from-secondary to-muted overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
                 <div className="absolute top-4 left-4">
-                  <span className={`px-3 py-1 text-xs font-medium rounded-full bg-${project.color}/20 text-${project.color}`}>
+                  <span className={`px-3 py-1 text-xs font-medium rounded-full bg-white/80 text-black`}>
                     {project.category}
                   </span>
                 </div>

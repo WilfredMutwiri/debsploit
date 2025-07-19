@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export NODE_ENV=production
-    - npm install
-    - npm run build
-    - cp -r dist/* /home/debsploi/public_html/
+    - export DEPLOYPATH=/home/debsploi/public_html/
+    - /usr/local/bin/npm install
+    - /usr/local/bin/npm run build
+    - /bin/cp -R dist/* $DEPLOYPATH

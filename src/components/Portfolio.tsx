@@ -74,7 +74,8 @@ const Portfolio = () => {
       year: "2024",
       results: "500+ professionals trained",
       color: "cyber-purple"
-    }
+    },
+    
   ];
 
   return (

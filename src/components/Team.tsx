@@ -2,6 +2,7 @@ import { Linkedin, Twitter, Github, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import erickImg from "@/assets/erick.png";
 import faithImg from "@/assets/faith.png";
+import aundry from "@/assets/audrey.png";
 
 const Team = () => {
   const teamMembers = [
@@ -94,6 +95,30 @@ const Team = () => {
         github: "#",
       },
     },
+    {
+  name: "Audrey Aluoch",
+  role: "Communications & Investigative Journalism Specialist",
+  image:aundry,
+  bio: "A passionate communication and journalism professional with a strong interest in business, investigative, and health reporting. Audrey combines her storytelling expertise with strategic communication to inform, educate, and drive impact. Her journey is marked by creativity, a hunger for elegance, and an unwavering pursuit of excellence in all forms of communication.",
+  specialties: [
+    "Investigative Journalism",
+    "Strategic Communication",
+    "Copywriting & Brand Storytelling",
+    "Digital Marketing",
+    "Career Counseling",
+  ],
+  certifications: [
+    "Take The Lead Program - Leadership in Communication",
+    "Certified Copywriting Essentials",
+    "Digital Marketing Foundations",
+  ],
+  social: {
+    linkedin: "#",
+    twitter: "#",
+    github: "#"
+  }
+}
+
   ];
 
   return (

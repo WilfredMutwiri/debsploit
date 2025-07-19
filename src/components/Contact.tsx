@@ -30,7 +30,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "info@debsploitsolutions.com",
+      content: "debsploit@gmail.com ",
       subContent: "support@debsploitsolutions.com",
       color: "cyber-blue"
     },
@@ -44,8 +44,8 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "Moi Avenue",
-      subContent: "Nairobi City , Kenya",
+      content: "ELDORET CBD",
+      subContent: "Eldoret City , Kenya",
       color: "cyber-purple"
     },
     {

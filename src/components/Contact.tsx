@@ -44,7 +44,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      content: "ELDORET CBD",
+      content: "Eldoret CBD",
       subContent: "Eldoret City , Kenya",
       color: "cyber-purple"
     },

@@ -4,4 +4,4 @@ deployment:
     - export NODE_ENV=production
     - npm install
     - npm run build
-    - cp -r dist/* /home/debsploi/public_html/
+    - cp -r /* /home/debsploi/public_html/

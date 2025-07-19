@@ -82,7 +82,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <Mail className="h-4 w-4 text-cyber-blue" />
-                <span>info@debsploitsolutions.com</span>
+                <span>debsploit@gmail.com </span>
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <Phone className="h-4 w-4 text-cyber-green" />
@@ -90,7 +90,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-cyber-purple" />
-                <span>Moi Avenue, Nairobi City, Kenya</span>
+                <span>Eldoret CBD, Eldoret City, Kenya</span>
               </div>
             </div>
 

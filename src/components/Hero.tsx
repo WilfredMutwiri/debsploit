@@ -4,7 +4,7 @@ import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen mt-24 md:mt-20 flex items-center relative overflow-hidden hero-gradient">
+    <section id="home" className="min-h-screen mt-24 md:mt-20 flex items-center w-11/12 mx-auto relative overflow-hidden hero-gradient">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -36,14 +36,16 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
+              <a href="#services">
+                <Button 
                 size="lg" 
                 className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow transition-all duration-300 text-white text-lg px-8 py-6"
               >
                 Explore Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              
+              </a>
+              <a href="#team">
               <Button 
                 variant="outline" 
                 size="lg" 
@@ -51,6 +53,7 @@ const Hero = () => {
               >
                 Meet Our Team
               </Button>
+              </a>
             </div>
 
             {/* Stats */}

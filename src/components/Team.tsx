@@ -1,10 +1,24 @@
-import { Linkedin, Twitter, Github, Award } from "lucide-react";
+import { useState } from "react";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Award,
+  X,
+  CheckCircle,
+} from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import erickImg from "@/assets/erick.png";
 import faithImg from "@/assets/faith.png";
 import aundry from "@/assets/audrey.png";
 
 const Team = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const teamMembers = [
     {
       name: "Erick Odhiambo",
@@ -117,12 +131,20 @@ const Team = () => {
     twitter: "#",
     github: "#"
   }
-}
+}];
 
-  ];
+// handle submit
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      setOpenModal(false);
+      setSubmitted(false);
+    }, 2500);
+  };
 
   return (
-    <section id="team" className="py-24 relative">
+    <section id="team" className="py-24 relative w-11/12 mx-auto">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card">
@@ -250,15 +272,50 @@ const Team = () => {
             </div>
           ))}
         </div>
-                <div className="text-center mt-16">
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-cyber-purple text-cyber-purple hover:bg-cyber-purple hover:text-white"
-                  >
-                    Join Our Team
-                  </Button>
+        <div className="text-center mt-16">
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-cyber-purple text-cyber-purple hover:bg-cyber-purple hover:text-white"
+            onClick={() => setOpenModal(true)}
+          >
+            Join Our Team
+          </Button>
+        </div>
+
+                {/* Join Modal */}
+        <Dialog open={openModal} onOpenChange={setOpenModal}>
+          <DialogContent className="max-w-lg space-y-6 bg-background border border-border p-8 rounded-xl">
+            {submitted ? (
+              <div className="text-center space-y-4">
+                <CheckCircle className="mx-auto text-green-500 h-12 w-12" />
+                <h3 className="text-xl font-semibold">Application Sent!</h3>
+                <p className="text-muted-foreground">
+                  Thank you for your interest. Our team will reach out to you shortly.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-semibold">Join Our Team</h3>
+                  <button onClick={() => setOpenModal(false)}>
+                    <X className="w-5 h-5 text-muted-foreground" />
+                  </button>
                 </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <Input type="email" placeholder="Email" required />
+                  <Input type="tel" placeholder="Phone Number" required />
+                  <Input type="text" placeholder="Qualifications" required />
+                  <Textarea placeholder="Optional message..." rows={4} />
+                  <Button type="submit" className="w-full bg-cyber-purple text-white">
+                    Submit Application
+                  </Button>
+                </form>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

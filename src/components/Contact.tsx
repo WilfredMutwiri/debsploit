@@ -58,7 +58,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative w-11/12 mx-auto">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card">

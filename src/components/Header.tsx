@@ -1,20 +1,33 @@
 import { useState } from "react";
-import { Menu, X, Shield, Code, Users, FileText, MessageSquare, UserCheck } from "lucide-react";
+import {
+  Menu,
+  X,
+  Shield,
+  Code,
+  Users,
+  FileText,
+  MessageSquare,
+  UserCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoImg from "@/assets/logo.png"
+import logoImg from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home", icon: Shield },
-    { name: "About", href: "#about", icon: UserCheck },
-    { name: "Services", href: "#services", icon: Code },
-    { name: "Portfolio", href: "#portfolio", icon: FileText },
-    { name: "Team", href: "#team", icon: Users },
-    { name: "Blog", href: "#blog", icon: FileText },
-    { name: "Contact", href: "#contact", icon: MessageSquare },
+    { name: "Home", href: "/", icon: Shield },
+    { name: "About", href: "/MoreAbout", icon: UserCheck },
+    { name: "Services", href: "/MoreServices", icon: Code },
+    { name: "Portfolio", href: "/MoreProjects", icon: FileText },
+    { name: "Team", href: "/Team", icon: Users },
+    { name: "Blog", href: "/Blog", icon: FileText },
+    { name: "Contact", href: "/Contact", icon: MessageSquare },
   ];
+
+  const handleGetStarted = () => {
+    alert("Feature not available!");
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
@@ -22,14 +35,14 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img src={logoImg} className="h-10 w-10"/>
+            <img src={logoImg} className="h-10 w-10" />
             <span className="text-xl md:text-2xl font-heading font-bold gradient-text">
               Debsploit Solutions
             </span>
           </div>
 
           {/* Desktop Navigation */}
-<nav className="hidden md:flex flex-wrap items-center gap-x-6">
+          <nav className="hidden md:flex flex-wrap items-center gap-x-6">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -56,7 +69,11 @@ const Header = () => {
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </div>
 
@@ -75,9 +92,11 @@ const Header = () => {
                   <span>{item.name}</span>
                 </a>
               ))}
-              <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white mt-4">
-                Get Started
-              </Button>
+              <a href="/">
+                <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white mt-4">
+                  Get Started
+                </Button>
+              </a>
             </div>
           </nav>
         )}

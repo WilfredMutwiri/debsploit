@@ -24,7 +24,7 @@ const Team = () => {
       name: "Erick Odhiambo",
       role: "Lead Cybersecurity Instructor",
       image: erickImg,
-      bio: "15+ years in cybersecurity with expertise in penetration testing and incident response. Former security consultant for major tech companies.",
+      bio: "6 years in cybersecurity with expertise in penetration testing and incident response. Former security consultant for major tech companies.",
       specialties: [
         "Penetration Testing",
         "Incident Response",
@@ -41,7 +41,7 @@ const Team = () => {
       name: "Brandon Ochieng",
       role: "Senior Web Development Instructor",
       // image: "/api/placeholder/300/300",
-      bio: "Full-stack developer with 12+ years building scalable web applications. Expert in modern JavaScript frameworks and cloud technologies.",
+      bio: "Full-stack developer with 5 years building scalable web applications. Expert in modern JavaScript frameworks and cloud technologies.",
       specialties: ["React/Node.js", "Cloud Architecture", "DevOps"],
       certifications: [
         "AWS Solutions Architect",

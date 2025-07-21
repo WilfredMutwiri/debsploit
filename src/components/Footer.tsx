@@ -60,9 +60,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative border-t border-border">
+    <footer className="relative border-t border-border w-11/12 mx-auto">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div className="flex flex-row justify-between items-start gap-8 lg:gap-16 flex-wrap lg:flex-nowrap">
           {/* Company Info */}
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center space-x-2">
@@ -111,7 +111,7 @@ const Footer = () => {
 
           {/* Footer Links */}
           {footerSections.map((section, index) => (
-            <div key={index} className="space-y-6">
+            <div key={index} className="space-y-6 ">
               <h3 className="font-heading font-semibold text-foreground">
                 {section.title}
               </h3>

@@ -1,279 +1,107 @@
-import { Calendar, User, ArrowRight, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { PacmanLoader } from "react-spinners";
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      title: "Advanced Penetration Testing Techniques for 2024",
-      excerpt:
-        "Explore the latest penetration testing methodologies and tools that are shaping the cybersecurity landscape this year.",
-      author: "Alex Johnson",
-      date: "March 15, 2024",
-      category: "Cybersecurity",
-      readTime: "8 min read",
-      image: "/api/placeholder/400/250",
-      featured: true,
-    },
-    {
-      title: "Advanced Penetration Testing Techniques for 2024",
-      excerpt:
-        "Explore the latest penetration testing methodologies and tools that are shaping the cybersecurity landscape this year.",
-      author: "Alex Johnson",
-      date: "March 15, 2024",
-      category: "Cybersecurity",
-      readTime: "8 min read",
-      image: "/api/placeholder/400/250",
-      featured: true,
-    },
-    {
-      title: "Building Secure React Applications: Best Practices",
-      excerpt:
-        "Learn how to implement security best practices in your React applications to protect against common vulnerabilities.",
-      author: "Sarah Chen",
-      date: "March 10, 2024",
-      category: "Web Development",
-      readTime: "6 min read",
-      image: "/api/placeholder/400/250",
-      featured: false,
-    },
-    {
-      title: "The Future of Cybersecurity: AI and Machine Learning",
-      excerpt:
-        "Discover how artificial intelligence is revolutionizing cybersecurity and what it means for security professionals.",
-      author: "Michael Rodriguez",
-      date: "March 5, 2024",
-      category: "Technology",
-      readTime: "10 min read",
-      image: "/api/placeholder/400/250",
-      featured: false,
-    },
-    {
-      title: "Corporate Cybersecurity Training: Why It Matters",
-      excerpt:
-        "Understanding the importance of comprehensive cybersecurity training for organizations and their employees.",
-      author: "Lisa Park",
-      date: "February 28, 2024",
-      category: "Corporate Training",
-      readTime: "7 min read",
-      image: "/api/placeholder/400/250",
-      featured: false,
-    },
-    {
-      title: "Zero Trust Architecture: Implementation Guide",
-      excerpt:
-        "A comprehensive guide to implementing Zero Trust security architecture in modern organizations.",
-      author: "Emma Thompson",
-      date: "February 20, 2024",
-      category: "Cybersecurity",
-      readTime: "12 min read",
-      image: "/api/placeholder/400/250",
-      featured: false,
-    },
-    {
-      title: "Digital Marketing for Tech Companies",
-      excerpt:
-        "Effective digital marketing strategies specifically tailored for technology and cybersecurity companies.",
-      author: "David Kim",
-      date: "February 15, 2024",
-      category: "Digital Marketing",
-      readTime: "9 min read",
-      image: "/api/placeholder/400/250",
-      featured: false,
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "Cybersecurity":
-        return "cyber-blue";
-      case "Web Development":
-        return "cyber-green";
-      case "Technology":
-        return "cyber-purple";
-      case "Corporate Training":
-        return "cyber-blue";
-      case "Digital Marketing":
-        return "cyber-green";
-      default:
-        return "cyber-blue";
+  const getPosts = async () => {
+    setLoading(true);
+    setIsError(false);
+    try {
+      const response = await fetch(
+        "https://dev.to/api/articles?username=ugglr"
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Fetch error:", error);
+      setIsError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
+  useEffect(() => {
+    getPosts().then((res) => {
+      if (res) {
+        setPosts(res);
+      }
+    });
+  }, []);
+
   return (
-    <section id="blog" className="py-24 relative w-11/12 mx-auto">
-      <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card">
-            <FileText className="h-4 w-4 text-cyber-blue" />
-            <span className="text-sm text-cyber-blue font-medium">
-              Latest Insights
-            </span>
-          </div>
-
-          <h2 className="text-4xl lg:text-5xl font-heading font-bold">
-            Tech <span className="gradient-text">Blog</span>
+    <section id="blog" className="relative w-11/12 mx-auto pt-28">
+      <h2 className="text-center pb-5 text-4xl font-bold"> ~ Blogs ~</h2>
+      {loading && (
+        <div className="flex flex-col justify-center items-center py-10 gap-6">
+          <PacmanLoader color="#36d7b7" size={25} />
+          <h2 className="text-center text-[#36d7b7] text-base">
+            Loading blogs...
           </h2>
-
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Stay updated with the latest trends, insights, and best practices in
-            cybersecurity, web development, and technology.
+        </div>
+      )}
+      {isError && (
+        <div className="text-center p-6 bg-red-50 border border-red-200 rounded-md">
+          <h2 className="text-red-500 text-lg font-semibold">
+            😢 Oops, an error occurred!
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Please check your internet connection and try again.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Featured Post */}
-          <div className="lg:col-span-2">
-            {blogPosts
-              .filter((post) => post.featured)
-              .map((post, index) => (
-                <div
-                  key={index}
-                  className="glass-card overflow-hidden cyber-glow hover:scale-[1.02] transition-all duration-300 mt-10"
-                >
-                  {/* Featured Image */}
-                  <div className="relative h-32 bg-gradient-to-br from-secondary to-muted">
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className={`px-3 py-1 text-sm font-medium rounded-full bg-${getCategoryColor(
-                          post.category
-                        )}/20 text-${getCategoryColor(post.category)}`}
-                      >
-                        Featured
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-8 space-y-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                        <span
-                          className={`px-2 py-1 rounded-md bg-${getCategoryColor(
-                            post.category
-                          )}/20 text-${getCategoryColor(post.category)}`}
-                        >
-                          {post.category}
-                        </span>
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{post.date}</span>
-                        </div>
-                        <span>{post.readTime}</span>
-                      </div>
-
-                      <h3 className="text-2xl font-heading font-bold leading-tight hover:text-cyber-blue transition-colors cursor-pointer">
-                        {post.title}
-                      </h3>
-
-                      <p className="text-muted-foreground leading-relaxed">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="flex items-center justify-between pt-4">
-                        <div className="flex items-center space-x-2">
-                          <User className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm text-muted-foreground">
-                            by {post.author}
-                          </span>
-                        </div>
-
-                        <Button
-                          variant="default"
-                          className="text-black hover:text-white"
-                        >
-                          Read More
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-
-          {/* Recent Posts */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-heading font-semibold">Recent Posts</h3>
-
-            {blogPosts
-              .filter((post) => !post.featured)
-              .slice(0, 4)
-              .map((post, index) => (
-                <div
-                  key={index}
-                  className="glass-card p-6 cyber-glow hover:scale-105 transition-all duration-300 group"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-                      <span
-                        className={`px-2 py-1 rounded-md bg-${getCategoryColor(
-                          post.category
-                        )}/20 text-${getCategoryColor(post.category)}`}
-                      >
-                        {post.category}
-                      </span>
-                      <span>{post.date}</span>
-                    </div>
-
-                    <h4 className="font-heading font-semibold leading-tight group-hover:text-cyber-blue transition-colors cursor-pointer">
-                      {post.title}
-                    </h4>
-
-                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground">
-                        {post.readTime}
-                      </span>
-                      <Button
-                        variant="default"
-                        className="text-black hover:text-white p-0 h-10 w-32"
-                      >
-                        Read More
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-            {/* Newsletter Signup */}
-            <div className="glass-card p-6 cyber-glow">
-              <div className="space-y-4">
-                <h4 className="font-heading font-semibold">Stay Updated</h4>
-                <p className="text-muted-foreground text-sm">
-                  Subscribe to our newsletter for the latest cybersecurity
-                  insights and industry news.
-                </p>
-                <div className="space-y-2">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-2 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue"
+      )}
+      {!loading && !isError && posts.length > 0 && (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {posts.slice(0, 4).map((post) => (
+              <div
+                key={post.id}
+                className="mb-6 p-4 border rounded-lg shadow hover:shadow-lg transition"
+              >
+                {post.cover_image && (
+                  <img
+                    src={post.cover_image}
+                    alt={post.title}
+                    className="w-full h-48 object-cover rounded-md mb-3"
                   />
-                  <Button className="w-full bg-cyber-blue hover:bg-cyber-blue-glow text-white">
-                    Subscribe
-                  </Button>
-                </div>
+                )}
+                <h2 className="text-lg font-semibold line-clamp-2">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-gray-500">
+                  {post.published_at.slice(0, 10)}
+                </p>
+                <p className="mt-2 text-gray-700 line-clamp-3">
+                  {post.description}
+                </p>
+                <a
+                  href={post.canonical_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-blue-600 hover:underline mt-3"
+                >
+                  Read More <ArrowRight className="ml-1 w-4 h-4" />
+                </a>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
-
-        <div className="text-center mt-16">
-          <a href="/MorePosts">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-white"
-            >
-              View All Posts
-            </Button>
-          </a>
-        </div>
-      </div>
+          <div className="text-center mt-12">
+            <a href="/MorePosts">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-white"
+              >
+                View All Blogs
+              </Button>
+            </a>
+          </div>
+        </>
+      )}
     </section>
   );
 };

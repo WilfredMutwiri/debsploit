@@ -1,13 +1,5 @@
 import { useState } from "react";
-import {
-  Linkedin,
-  Twitter,
-  Github,
-  Award,
-  X,
-  CheckCircle,
-} from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Linkedin, Twitter, Github, Award, X, CheckCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -15,9 +7,51 @@ import erickImg from "@/assets/erick.png";
 import faithImg from "@/assets/faith.png";
 import aundry from "@/assets/audrey.png";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 const Team = () => {
   const [openModal, setOpenModal] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(false);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xldwdqnp", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        form.reset();
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const teamMembers = [
     {
@@ -110,38 +144,29 @@ const Team = () => {
       },
     },
     {
-  name: "Audrey Aluoch",
-  role: "Communications & Investigative Journalism Specialist",
-  image:aundry,
-  bio: "A passionate communication and journalism professional with a strong interest in business, investigative, and health reporting. Audrey combines her storytelling expertise with strategic communication to inform, educate, and drive impact. Her journey is marked by creativity, a hunger for elegance, and an unwavering pursuit of excellence in all forms of communication.",
-  specialties: [
-    "Investigative Journalism",
-    "Strategic Communication",
-    "Copywriting & Brand Storytelling",
-    "Digital Marketing",
-    "Career Counseling",
-  ],
-  certifications: [
-    "Take The Lead Program - Leadership in Communication",
-    "Certified Copywriting Essentials",
-    "Digital Marketing Foundations",
-  ],
-  social: {
-    linkedin: "#",
-    twitter: "#",
-    github: "#"
-  }
-}];
-
-// handle submit
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setOpenModal(false);
-      setSubmitted(false);
-    }, 2500);
-  };
+      name: "Audrey Aluoch",
+      role: "Communications & Investigative Journalism Specialist",
+      image: aundry,
+      bio: "A passionate communication and journalism professional with a strong interest in business, investigative, and health reporting. Audrey combines her storytelling expertise with strategic communication to inform, educate, and drive impact. Her journey is marked by creativity, a hunger for elegance, and an unwavering pursuit of excellence in all forms of communication.",
+      specialties: [
+        "Investigative Journalism",
+        "Strategic Communication",
+        "Copywriting & Brand Storytelling",
+        "Digital Marketing",
+        "Career Counseling",
+      ],
+      certifications: [
+        "Take The Lead Program - Leadership in Communication",
+        "Certified Copywriting Essentials",
+        "Digital Marketing Foundations",
+      ],
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#",
+      },
+    },
+  ];
 
   return (
     <section id="team" className="py-24 relative w-11/12 mx-auto">
@@ -283,7 +308,7 @@ const Team = () => {
           </Button>
         </div>
 
-                {/* Join Modal */}
+        {/* Join Modal */}
         <Dialog open={openModal} onOpenChange={setOpenModal}>
           <DialogContent className="max-w-lg space-y-6 bg-background border border-border p-8 rounded-xl">
             {submitted ? (
@@ -291,26 +316,65 @@ const Team = () => {
                 <CheckCircle className="mx-auto text-green-500 h-12 w-12" />
                 <h3 className="text-xl font-semibold">Application Sent!</h3>
                 <p className="text-muted-foreground">
-                  Thank you for your interest. Our team will reach out to you shortly.
+                  Thank you for your interest. Our team will reach out to you
+                  shortly.
                 </p>
               </div>
             ) : (
               <>
                 <div className="flex justify-between items-center">
                   <h3 className="text-xl font-semibold">Join Our Team</h3>
-                  <button onClick={() => setOpenModal(false)}>
-                    <X className="w-5 h-5 text-muted-foreground" />
-                  </button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <Input type="email" placeholder="Email" required />
-                  <Input type="tel" placeholder="Phone Number" required />
-                  <Input type="text" placeholder="Qualifications" required />
-                  <Textarea placeholder="Optional message..." rows={4} />
-                  <Button type="submit" className="w-full bg-cyber-purple text-white">
-                    Submit Application
+                  <input
+                    type="hidden"
+                    name="application_type"
+                    value="team_application"
+                  />
+
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                  <Input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                  />
+                  <Input
+                    type="text"
+                    name="qualifications"
+                    placeholder="Qualifications"
+                    required
+                  />
+                  <Textarea
+                    name="message"
+                    placeholder="Optional message..."
+                    rows={4}
+                  />
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-cyber-purple text-white"
+                    disabled={loading}
+                  >
+                    {loading ? "Submitting..." : "Submit Application"}
                   </Button>
+
+                  {success && (
+                    <p className="text-green-500 text-sm">
+                      Application submitted successfully!
+                    </p>
+                  )}
+                  {error && (
+                    <p className="text-red-500 text-sm">
+                      Oops! Something went wrong. Please try again.
+                    </p>
+                  )}
                 </form>
               </>
             )}

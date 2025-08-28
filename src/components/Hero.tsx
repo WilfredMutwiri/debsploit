@@ -76,38 +76,38 @@ const Hero = () => {
           {/* Floating Service Cards */}
           <div className="relative">
             <div className="space-y-6">
-              <div className="glass-card p-6 cyber-glow transform hover:scale-105 transition-all duration-300">
-                <div className="flex items-center space-x-4">
+              <div className="glass-card p-6 cyber-glow animate-bounce duration-2000 rounded-md w-56">
+                <div className="flex flex-col gap-4 items-center">
                   <div className="p-3 rounded-lg bg-cyber-blue/20">
-                    <Shield className="h-8 w-8 text-cyber-blue" />
+                    <Shield className="h-6 w-6 text-cyber-blue" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">Cybersecurity</h3>
-                    <p className="text-muted-foreground">Advanced security training</p>
+                    <h3 className="text-lg font-semibold text-center">Cybersecurity</h3>
+                    <p className="text-muted-foreground text-center text-sm">Advanced security training</p>
                   </div>
                 </div>
               </div>
 
-              <div className="glass-card p-6 cyber-glow transform hover:scale-105 transition-all duration-300 ml-8">
-                <div className="flex items-center space-x-4">
+              <div className="glass-card p-6 cyber-glow ml-44 md:ml-72 animate-pulse duration-2000 rounded-md w-56">
+                <div className="flex flex-col gap-4 items-center">
                   <div className="p-3 rounded-lg bg-cyber-green/20">
-                    <Code className="h-8 w-8 text-cyber-green" />
+                    <Code className="h-6 w-6 text-cyber-green" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">Web Development</h3>
-                    <p className="text-muted-foreground">Modern web technologies</p>
+                    <h3 className="text-lg text-center font-semibold">Web Development</h3>
+                    <p className="text-muted-foreground text-center  text-sm">Modern web technologies</p>
                   </div>
                 </div>
               </div>
 
-              <div className="glass-card p-6 cyber-glow transform hover:scale-105 transition-all duration-300">
-                <div className="flex items-center space-x-4">
+              <div className="glass-card p-6 cyber-glow animate-bounce duration-2000 rounded-md w-56">
+                <div className="flex items-center flex-col gap-4">
                   <div className="p-3 rounded-lg bg-cyber-purple/20">
-                    <Zap className="h-8 w-8 text-cyber-purple" />
+                    <Zap className="h-6 w-6 text-cyber-purple" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold">Penetration Testing</h3>
-                    <p className="text-muted-foreground">Ethical hacking skills</p>
+                    <h3 className="text-lg text-center font-semibold">Penetration Testing</h3>
+                    <p className="text-muted-foreground text-sm text-center">Ethical hacking skills</p>
                   </div>
                 </div>
               </div>

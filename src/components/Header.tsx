@@ -21,7 +21,7 @@ const Header = () => {
     { name: "Services", href: "/MoreServices", icon: Code },
     { name: "Portfolio", href: "/MoreProjects", icon: FileText },
     { name: "Team", href: "/Team", icon: Users },
-    { name: "Blog", href: "/Blog", icon: FileText },
+    { name: "Market_Place", href: "/Market", icon: FileText },
     { name: "Contact", href: "/Contact", icon: MessageSquare },
   ];
 
@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4 mr-44">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -56,11 +56,11 @@ const Header = () => {
           </nav>
 
           {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
+          {/* <div className="hidden md:block">
             <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white">
               Get Started
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <Button
@@ -92,11 +92,11 @@ const Header = () => {
                   <span>{item.name}</span>
                 </a>
               ))}
-              <a href="/">
+              {/* <a href="/">
                 <Button className="cyber-glow bg-cyber-blue hover:bg-cyber-blue-glow text-white mt-4">
                   Get Started
                 </Button>
-              </a>
+              </a> */}
             </div>
           </nav>
         )}
